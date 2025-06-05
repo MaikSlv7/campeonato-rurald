@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeonato Rural - Ao Vivo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>CAMPEONATO RURAL <span class="live-badge">AO VIVO</span></h1>
+    </div>
+    
+    <div class="card">
+        <h2>JOGOS EM ANDAMENTO</h2>
+        <table id="live-matches">
+            <!-- Conteúdo dinâmico -->
+        </table>
+        <div class="update-time" id="last-update"></div>
+    </div>
+    
+    <!-- ... (mesma estrutura do exemplo anterior) ... -->
+
+    <!-- Firebase e scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="firebase.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
