@@ -1,8 +1,0 @@
-/* ... (utilize o CSS do exemplo anterior) ... */
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .tabela-grupos { flex-direction: column; }
-    .card { padding: 10px; }
-    th, td { padding: 8px 4px; }
-}
