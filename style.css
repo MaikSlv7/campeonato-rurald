@@ -1,0 +1,98 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e4f7e1;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+header {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+header h1 {
+  margin: 0;
+}
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.placares {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.placar {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  font-size: 1.1em;
+}
+.placar::before {
+  content: "AO VIVO";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 0.7em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+th {
+  background-color: #4CAF50;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even) {
+  background-color: #f1f8f4;
+}
+h2 {
+  color: #4CAF50;
+  font-family: 'Montserrat', sans-serif;
+  border-bottom: 2px solid #4CAF50;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+@media (max-width: 768px) {
+  .placares {
+    grid-template-columns: 1fr;
+  }
+  
+  table {
+    font-size: 0.8em;
+  }
+  
+  button {
+    padding: 5px 10px;
+    font-size: 0.8em;
+  }
+}

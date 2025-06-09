@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Campeonato Rural</title>
+<link rel="stylesheet" href="style.css">
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script>
+  const firebaseConfig = {
+    databaseURL: "https://campeonato-rural-default-rtdb.firebaseio.com/"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
+
+</head>
+<body>
+<div id="login-container" style="max-width: 400px; margin: 50px auto; padding: 20px; background: white; border-radius: 8px; text-align: center;">
+  <h2>Acesso Administrativo</h2>
+  <form id="login-form">
+    <input type="password" id="senha" placeholder="Digite a senha" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+    <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Acessar</button>
+  </form>
+</div>
+
+<header>
+  <h1>Admin - Campeonato Rural</h1>
+</header>
+
+<div class="container">
+
+  <h2>Cadastrar Time</h2>
+  <form id="formTime">
+    Nome do Time: <input type="text" id="nomeTime" required>
+    <button type="submit">Cadastrar Time</button>
+  </form>
+  <ul id="listaTimes"></ul>
+
+  <h2>Cadastrar Jogador</h2>
+  <form id="formJogador">
+    Nome do Jogador: <input type="text" id="nomeJogador" required><br>
+    Posição: <input type="text" id="posicaoJogador" required><br>
+    Número: <input type="number" id="numeroJogador" required><br>
+    Time:
+    <select id="selectTime" required></select><br>
+    <button type="submit">Cadastrar Jogador</button>
+  </form>
+  <ul id="listaJogadores"></ul>
+
+  <h2>Cadastrar Novo Jogo</h2>
+  <form id="formJogo">
+    Time A: <input type="text" id="timeA" required><br>
+    Time B: <input type="text" id="timeB" required><br>
+    Data: <input type="date" id="dataJogo" required><br>
+    Hora: <input type="time" id="horaJogo" required><br>
+    Ao vivo: <input type="checkbox" id="aoVivo"><br>
+    <button type="submit">Cadastrar Jogo</button>
+  </form>
+
+  <h2>Jogos Cadastrados</h2>
+  <ul id="listaJogos"></ul>
+</div>
+  <h2>Placar Ao Vivo</h2>
+  <div class="placares">
+    <div class="placar">São Pedro 1 - 0 União</div>
+    <div class="placar">Juventude 0 - 1 Vila Nova</div>
+    <div class="placar">Floresta 0 - 0 Palmeiras</div>
+    <div class="placar">América 1 - 1 Cruzeiro</div>
+  </div>
+
+  <h2>Tabela de Pontos</h2>
+  <table>
+    <tr><th>Time</th><th>Pontos</th><th>Jogos</th><th>Vitórias</th><th>Empates</th><th>Derrotas</th></tr>
+    <tr><td>São Pedro</td><td>15</td><td>7</td><td>5</td><td>0</td><td>2</td></tr>
+    <tr><td>Floresta</td><td>12</td><td>7</td><td>4</td><td>0</td><td>3</td></tr>
+    <tr><td>União</td><td>10</td><td>7</td><td>3</td><td>1</td><td>3</td></tr>
+    <tr><td>Vila Nova</td><td>9</td><td>7</td><td>3</td><td>0</td><td>4</td></tr>
+  </table>
+
+  <h2>Saldo de Gols dos Jogadores</h2>
+  <table>
+    <tr><th>Jogador</th><th>Time</th><th>Gols</th></tr>
+    <tr><td>João</td><td>São Pedro</td><td>4</td></tr>
+    <tr><td>Lucas</td><td>Floresta</td><td>3</td></tr>
+    <tr><td>Pedro</td><td>União</td><td>2</td></tr>
+    <tr><td>Rafael</td><td>Vila Nova</td><td>1</td></tr>
+  </table>
+</div>
+
+<script>
+  document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const senha = document.getElementById('senha').value;
+    if (senha === 'admin123') {
+      document.getElementById('login-container').style.display = 'none';
+      document.querySelector('.container').style.display = 'block';
+    } else {
+      alert('Senha incorreta!');
+    }
+  });
+  
+  // Esconder o container principal inicialmente
+  document.querySelector('.container').style.display = 'none';
+</script>
+
+</body>
+</html>

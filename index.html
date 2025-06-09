@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Campeonato Rural</title>
+<link rel="stylesheet" href="style.css">
+
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script>
+  const firebaseConfig = {
+    databaseURL: "https://campeonato-rural-default-rtdb.firebaseio.com/"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
+
+</head>
+<body>
+
+<header>
+  <h1>Campeonato Rural - Acompanhamento</h1>
+</header>
+
+<div class="container">
+  <h2>Placar Ao Vivo</h2>
+  <div class="placares">
+   <div class="placares" id="placares-ao-vivo"></div>
+</div>
+
+  <h2>Tabela de Pontos</h2>
+  <table>
+	<table id="tabela-classificacao">
+  	  </table>
+
+  <h2>Saldo de Gols dos Jogadores</h2>
+  <table>
+     <table id="artilheiros">
+  </table>
+</div>
+
+<script>
+  // Buscar jogos ao vivo
+  db.ref('jogos').orderByChild('aoVivo').equalTo(true).on('value', (snapshot) => {
+    const placares = document.querySelector('.placares');
+    placares.innerHTML = '';
+    
+    snapshot.forEach((childSnapshot) => {
+      const jogo = childSnapshot.val();
+      const div = document.createElement('div');
+      div.className = 'placar';
+      div.textContent = `${jogo.timeA} ${jogo.golsA} - ${jogo.golsB} ${jogo.timeB}`;
+      placares.appendChild(div);
+    });
+  });
+  
+  // Buscar tabela de classificação (precisa implementar lógica de pontuação)
+  // Buscar artilheiros
+  db.ref('jogadores').orderByChild('gols').limitToLast(5).on('value', (snapshot) => {
+    const tabela = document.querySelectorAll('table')[2]; // Ajuste o índice conforme necessário
+    const tbody = tabela.querySelector('tbody') || tabela.createTBody();
+    tbody.innerHTML = '';
+    
+    snapshot.forEach((childSnapshot) => {
+      const jogador = childSnapshot.val();
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${jogador.nome}</td><td>${jogador.time}</td><td>${jogador.gols}</td>`;
+      tbody.appendChild(tr);
+    });
+  });
+</script>
+
+</body>
+</html>
